@@ -1,6 +1,6 @@
 import 'package:doctor_app/core/network/api_result.dart';
 import 'package:doctor_app/features/login/data/models/login_request_body.dart';
-import 'package:doctor_app/features/login/data/repo/login_repo.dart';
+import 'package:doctor_app/features/login/data/repos/login_repo.dart';
 import 'package:doctor_app/features/login/logic/cubit/login_state.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,9 +12,14 @@ class LoginCubit extends Cubit<LoginState> {
   TextEditingController passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-  void emitLoginStates(LoginRequestBody loginRequestBody) async {
+  void emitLoginStates() async {
     emit(const LoginState.initial());
-    final responce = await _loginRepo.login(loginRequestBody);
+    final responce = await _loginRepo.login(
+      LoginRequestBody(
+        email: emailController.text,
+        password: passwordController.text,
+      ),
+    );
     responce.when(
       success: (loginResponse) {
         emit(LoginState.success(loginResponse));

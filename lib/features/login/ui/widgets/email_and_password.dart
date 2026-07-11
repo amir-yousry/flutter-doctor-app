@@ -4,7 +4,6 @@ import 'package:doctor_app/core/widgets/app_text_form_field.dart';
 import 'package:doctor_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:doctor_app/features/login/ui/widgets/password_validations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class EmailAndPassword extends StatefulWidget {
@@ -66,7 +65,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
           ),
           verticalSpace(18),
           AppTextFormField(
-            controller: context.read<LoginCubit>().emailController,
+            controller: context.read<LoginCubit>().passwordController,
             hintText: 'Password',
             obscureText: isPasswordVisible,
             suffixIcon: IconButton(
@@ -90,7 +89,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
           PasswordValidations(
             hasLowerCase: hasLowerCase,
             hasUpperCase: hasUpperCase,
-            hasSpecialCharacter: hasSpecialCharacter,
+            hasSpecialCharacters: hasSpecialCharacter,
             hasNumber: hasNumber,
             hasMinLength: hasMinLength,
           ),
