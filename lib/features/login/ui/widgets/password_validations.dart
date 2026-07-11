@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class PasswordValidations extends StatelessWidget {
   final bool hasLowerCase;
   final bool hasUpperCase;
-  final bool hasSpecialCharacter;
+  final bool hasSpecialCharacters;
   final bool hasNumber;
   final bool hasMinLength;
 
@@ -14,7 +14,7 @@ class PasswordValidations extends StatelessWidget {
     super.key,
     required this.hasLowerCase,
     required this.hasUpperCase,
-    required this.hasSpecialCharacter,
+    required this.hasSpecialCharacters,
     required this.hasNumber,
     required this.hasMinLength,
   });
@@ -27,7 +27,10 @@ class PasswordValidations extends StatelessWidget {
         verticalSpace(2),
         buildValidationRow(hasUpperCase, 'At least one uppercase letter'),
         verticalSpace(2),
-        buildValidationRow(hasSpecialCharacter, 'At least one special character'),
+        buildValidationRow(
+          hasSpecialCharacters,
+          'At least one special character',
+        ),
         verticalSpace(2),
         buildValidationRow(hasNumber, 'At least one number'),
         verticalSpace(2),
